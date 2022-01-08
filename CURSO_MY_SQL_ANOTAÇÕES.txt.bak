@@ -54,11 +54,7 @@ MYSQL
 	MULTIPOLYGON
 	Assim, GEOMETRYCOLLECTION pode armazenar coletâneas de objetos de qualquer tipo. Os outros tipos coletivos (MULTILINESTRING, MULTIPOLYGON e GEOMETRYCOLLECTION) restringem-se a cada forma geométrica particular.
 
-3 - CREATE TABLE (campo1 tipoprimitivo, campo2 tipoprimitivo, campo3 tipoprimitivo) PARÂMETROS ou CONSTRAINTS; - Esse comando cria uma tabela dentro do banco de dados:
-	Exemplo: Para criar criar um que aceite os caracteres com acentuação ou com cedilha como no caso da língua portuguesa basta incluir a CONSTRAINTS(PARÂMETRO)
-			 CREATE DATABASE cadastro
-			 DEFAULT CHARACTER SET utf8
-			 DEFAULT COLLATE utf8_general_ci; < --- parâmetros sempre em minúsculo. Esse exemplo define que o banco irá aceitar acento e cedilha por exemplo.
+3 - CREATE TABLE (campo1 tipoprimitivo, campo2 tipoprimitivo, campo3 tipoprimitivo); - Esse comando cria uma tabela dentro do banco de dados
 	3.1 - entre parênteses estarão as colunas que serão criadas seguidas dos seus respectivos tipos primitivos como, int, float, varchar, char, etc.
 	3.2 - Antes de executar o CREATE TABLE, será preciso especificar em que banco essa tabela sera criada, para isso basta executar o comando abaixo:
 		USE nomedobanco;
@@ -68,5 +64,3 @@ MYSQL
 5 - SHOW DATABASES; - Esse comando lista todos as bases de dados que existem criadas.
 	5.1 - STATUS; - Esse comando informa qual banco de dados está ativo no momento.
 	5.2 - SHOW TABLES; - Esse comando lista as tabelas que existem dentro de determinada base de dados.
-
-6 - DROP DATABASE nomedobanco; - Esse comando exclui um banco de dados totalmente(cuidado ao utilizar esse comando).
