@@ -54,13 +54,42 @@ MYSQL
 	MULTIPOLYGON
 	Assim, GEOMETRYCOLLECTION pode armazenar coletâneas de objetos de qualquer tipo. Os outros tipos coletivos (MULTILINESTRING, MULTIPOLYGON e GEOMETRYCOLLECTION) restringem-se a cada forma geométrica particular.
 
-3 - CREATE TABLE (campo1 tipoprimitivo, campo2 tipoprimitivo, campo3 tipoprimitivo); - Esse comando cria uma tabela dentro do banco de dados
+3 - CREATE TABLE (campo1 tipoprimitivo, campo2 tipoprimitivo, campo3 tipoprimitivo) PARÂMETROS ou CONSTRAINTS; - Esse comando cria uma tabela dentro do banco de dados:
+	Exemplo: Para criar criar um que aceite os caracteres com acentuação ou com cedilha como no caso da língua portuguesa basta incluir a CONSTRAINTS(PARÂMETRO)
+			 CREATE DATABASE cadastro
+			 DEFAULT CHARACTER SET utf8
+			 DEFAULT COLLATE utf8_general_ci; < --- parâmetros sempre em minúsculo. Esse exemplo define que o banco irá aceitar acento e cedilha por exemplo.
 	3.1 - entre parênteses estarão as colunas que serão criadas seguidas dos seus respectivos tipos primitivos como, int, float, varchar, char, etc.
 	3.2 - Antes de executar o CREATE TABLE, será preciso especificar em que banco essa tabela sera criada, para isso basta executar o comando abaixo:
 		USE nomedobanco;
+	3.3 - quando criar um campo que for de digitação obrigatória utilizar a constraint NOT NULL.
+	3.4 - quando o campo a criar tiver apenas algumas opções utilizar a constraint ENUM(opção1, opção2). Exe: genero enum('F', 'M').
+	3.5 - DECIMAL (TOTAL DE CASAS, CASAS APÓS VÍRGULA). Exemplo: peso decimal(5,2) - posso armazenar até 999,99 kg.
+	3.6 - AUTO_INCREMENT essa constraint define que o campo receberá um valor automaticamente. Exemplo: código, seguido de AUTO_INCREMENT, vai sendo incrementado automaticamente.
+	3.7 - PRIMARY KEY (chaveprimaria) - essa constraint define uma chave primária para a tabela.
 
 4 - DESCRIBE nomedatabela; - Esse comando descreve detalhadamente as colunas da tabela informada, mostrando o tipo primitivo de cada coluna.
 
 5 - SHOW DATABASES; - Esse comando lista todos as bases de dados que existem criadas.
 	5.1 - STATUS; - Esse comando informa qual banco de dados está ativo no momento.
 	5.2 - SHOW TABLES; - Esse comando lista as tabelas que existem dentro de determinada base de dados.
+
+6 - DROP DATABASE nomedobanco; - Esse comando exclui um banco de dados totalmente(cuidado ao utilizar esse comando).
+
+7 - INSERT INTO:
+	Sintaxe1: INSERT INTO nomedatabela (campo1, campo2, campoXX) VALUES (valor1, valor2, valorXX);
+	Sintaxe2: INSERTO INTO nomedatabela VALUES (valor1, valor2, valorXX); *** essa sintaxe para casos em que os valores seguem a mesma ordem dos campos informado na durante a criação da tabela ***
+	Sintaxe3: para casos de inclusão de várias linhas de registros utilizado o mesmo comando:
+			  INSERT INTO nomedatabela (campo1, campo2, campoXX) VALUES
+			  (valor1, valor2, valorXX),
+			  (valor3, valor4. valorXX),
+			  (valor5, valor6, valorXX); *** ou seja, basta separar cada bloco com valores, com vírgula.
+	
+	7.1 - quando houver campo com a constraint AUTO_INCREMENT, não é necessário informar valores para esse campo. Se o campo for informado para inserção, mas não souber qual é o próximo
+		valor basta colocar na posição do campo com AUTO_INCREMENT o valor DEFAULT. Desse forma automaticamente será identificado o próximo valor a ser inserido.
+	7.2 - quando houver campo com a constraint DEFAULT, caso não seja informado valor para o campo em questão, o valor informado no DEFAULT será incluído no registro.
+
+NOTA - CLASSES DE COMANDOS
+	COMANDOS DDL - COMANDOS DE DEFINIÇÃO DE DADOS
+		* CREATE TABLE
+		* CREATE DATABASE
